@@ -5,11 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class Cartridge : MonoBehaviour
 {
-    protected MeshRenderer _cartridgeRenderer;
+    private MeshRenderer _cartridgeRenderer;
 
     public MeshRenderer CartridgeRenderer => _cartridgeRenderer;
 
-    private void Start()
+    private void Awake()
     {
         _cartridgeRenderer = GetComponent<MeshRenderer>();
     }

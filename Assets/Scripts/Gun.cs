@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private List<Color> _ñartridgeColors;
     [SerializeField] private Transform _muzzle;
     [SerializeField] private Bullet _bullet;
+    [SerializeField] private ParticleSystem _shootEffect;
 
     private void Start()
     {
@@ -26,6 +27,10 @@ public class Gun : MonoBehaviour
     private void Shoot()
     {
         Color color = _magazineOfCartridge[0].CartridgeRenderer.material.color;
+        color.a = 1;
+        var main = _shootEffect.main;
+        main.startColor = color;
+        _shootEffect.Play();
         Bullet bullet = Instantiate<Bullet>(_bullet, _muzzle.position, _muzzle.rotation);
         bullet.SetColor(color);
     }
