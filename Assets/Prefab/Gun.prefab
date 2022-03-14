@@ -198,6 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7200000450384420830}
   - component: {fileID: -6117771043589490292}
+  - component: {fileID: 3739391440454725749}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -240,12 +241,32 @@ MonoBehaviour:
   - {fileID: 246228874449944152}
   - {fileID: 2773192695658073524}
   - {fileID: 2539506648986430245}
-  "_\u0441artridgeColors":
-  - {r: 0.49803922, g: 0.5019608, b: 0.92156863, a: 0}
-  - {r: 0.7924528, g: 0.70215946, b: 0.24969736, a: 0}
+  _cartridgeColors:
+  - {r: 0.9254902, g: 0.8627451, b: 0.23921569, a: 0}
+  - {r: 0.62352943, g: 0.23529412, b: 0.92941177, a: 0}
   _muzzle: {fileID: 6095867989154795953}
   _bullet: {fileID: 723405735667223280, guid: 86b6caf4e8fd8fb40bb0ac667f79d49a, type: 3}
   _shootEffect: {fileID: 5045845424484746072}
+  _recoilSpeed: 0.75
+--- !u!95 &3739391440454725749
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707841679498021803}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ccf5b20d64039c1459c74b552c47b700, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3074540828666392967
 GameObject:
   m_ObjectHideFlags: 0
