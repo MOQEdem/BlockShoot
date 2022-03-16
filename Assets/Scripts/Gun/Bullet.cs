@@ -9,6 +9,7 @@ public class Bullet : Cartridge
     [SerializeField] private ParticleSystem _flyEffect;
     [SerializeField] private ParticleSystem _hitEffect;
     [SerializeField] private float _lifetime;
+    [SerializeField] private float _deathDelay;
 
     private Rigidbody _rigidbody;
 
@@ -35,6 +36,22 @@ public class Bullet : Cartridge
     {
         yield return new WaitForSeconds(_lifetime);
 
-        Destroy(gameObject);
+        _hitEffect.Play();
+        Destroy();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<EnemyBlock>(out EnemyBlock enemyBlock))
+        {
+            Destroy();
+        }
+    }
+
+    public void Destroy()
+    {
+        _hitEffect.Play();
+        SetInvisibility();
+        Destroy(gameObject, _deathDelay);
     }
 }
