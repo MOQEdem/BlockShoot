@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class EnemyBlock : MonoBehaviour
+public class Block : MonoBehaviour
 {
-    [SerializeField] private EnemyBlock _previousBlock;
-    [SerializeField] private EnemyBlock _nextBlock;
+    [SerializeField] private Block _previousBlock;
+    [SerializeField] private Block _nextBlock;
+
+    public Block PreviousBlock => _previousBlock;
+    public Block NextBlock => _nextBlock;
 
     private MeshRenderer _blockRenderer;
 
-    public MeshRenderer BlockRenderer => _blockRenderer;
+    public Color MaterialColor => _blockRenderer.material.color;
 
     public event UnityAction Hited;
 
@@ -34,7 +37,7 @@ public class EnemyBlock : MonoBehaviour
     {
         if (other.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            _blockRenderer.material.color = bullet.CartridgeRenderer.material.color;
+            _blockRenderer.material.color = bullet.MaterialColor;
             Hited?.Invoke();
         }
     }
@@ -51,14 +54,28 @@ public class EnemyBlock : MonoBehaviour
 
     private bool CheckNeighboringBlocks()
     {
-        if (_blockRenderer.material.color == _previousBlock.BlockRenderer.material.color
-            && _blockRenderer.material.color == _nextBlock.BlockRenderer.material.color)
+        int comboCount = 1;
+
+        if (MaterialColor == _previousBlock.MaterialColor)
         {
-            return true;
+            comboCount++;
+
+            if (MaterialColor == _previousBlock.PreviousBlock.MaterialColor)
+            {
+                comboCount++;
+            }
         }
-        else
+
+        if (MaterialColor == _nextBlock.MaterialColor)
         {
-            return false;
+            comboCount++;
+
+            if (MaterialColor == _nextBlock.NextBlock.MaterialColor)
+            {
+                comboCount++;
+            }
         }
+
+        return comboCount >= 3;
     }
 }

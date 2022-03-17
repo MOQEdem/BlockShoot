@@ -26,7 +26,7 @@ public class Bullet : Cartridge
 
     private void TransferColorToParticles(ParticleSystem particleSystem)
     {
-        Color color = CartridgeRenderer.material.color;
+        Color color = MaterialColor;
         color.a = 1;
         var main = particleSystem.main;
         main.startColor = color;
@@ -42,7 +42,7 @@ public class Bullet : Cartridge
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<EnemyBlock>(out EnemyBlock enemyBlock))
+        if (other.TryGetComponent<Block>(out Block enemyBlock))
         {
             Destroy();
         }

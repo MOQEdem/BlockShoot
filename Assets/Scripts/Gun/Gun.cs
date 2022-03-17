@@ -41,7 +41,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
-        Color color = _magazineOfCartridge[0].CartridgeRenderer.material.color;
+        Color color = _magazineOfCartridge[0].MaterialColor;
         SetEffectColor(color);
         _shootEffect.Play();
         Bullet bullet = Instantiate<Bullet>(_bullet, _muzzle.position, _muzzle.rotation);
@@ -64,7 +64,7 @@ public class Gun : MonoBehaviour
     {
         for (int i = 0; i < _magazineOfCartridge.Count - 1; i++)
         {
-            Color color = _magazineOfCartridge[i + 1].CartridgeRenderer.material.color;
+            Color color = _magazineOfCartridge[i + 1].MaterialColor;
             _magazineOfCartridge[i].SetColor(color);
         }
 
