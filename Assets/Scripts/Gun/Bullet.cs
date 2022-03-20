@@ -10,6 +10,7 @@ public class Bullet : Cartridge
     [SerializeField] private ParticleSystem _hitEffect;
     [SerializeField] private float _lifetime;
     [SerializeField] private float _deathDelay;
+    [SerializeField] private Collider _triggerCollider;
 
     private Rigidbody _rigidbody;
 
@@ -50,6 +51,8 @@ public class Bullet : Cartridge
 
     public void Destroy()
     {
+        _triggerCollider.enabled = false;
+        _flyEffect.Stop();
         _hitEffect.Play();
         SetInvisibility();
         Destroy(gameObject, _deathDelay);

@@ -4,33 +4,42 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Explosion))]
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(BlockAnimation))]
 public class Block : MonoBehaviour
 {
-    [SerializeField] private Block _previousBlock;
-    [SerializeField] private Block _nextBlock;
+    [SerializeField] private float _freeBlockDestroyDelay;
+    [SerializeField] private float _normalDestroyDelay;
+    [SerializeField] private ParticleSystem _deathEffect;
+    [SerializeField] private Material _blockParts;
+    [SerializeField] private Collider _collider;
 
-    public Block PreviousBlock => _previousBlock;
-    public Block NextBlock => _nextBlock;
+    public class Hit : UnityEvent<int> { }
 
+    private Rigidbody _rigidbody;
     private MeshRenderer _blockRenderer;
+    private BlockAnimation _blockAnimation;
+    private Explosion _explosion;
+    private int _position;
 
     public Color MaterialColor => _blockRenderer.material.color;
+    public Explosion Explosion => _explosion;
+    public BlockAnimation Animation => _blockAnimation;
 
-    public event UnityAction Hited;
+    public Hit Hited;
 
     private void Awake()
     {
+        if (Hited == null)
+            Hited = new Hit();
+
         _blockRenderer = GetComponent<MeshRenderer>();
-    }
-
-    private void OnEnable()
-    {
-        Hited += DestroyCombo;
-    }
-
-    private void OnDisable()
-    {
-        Hited -= DestroyCombo;
+        _rigidbody = GetComponent<Rigidbody>();
+        _explosion = GetComponent<Explosion>();
+        _collider = GetComponent<Collider>();
+        _blockAnimation = GetComponent<BlockAnimation>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,44 +47,36 @@ public class Block : MonoBehaviour
         if (other.TryGetComponent<Bullet>(out Bullet bullet))
         {
             _blockRenderer.material.color = bullet.MaterialColor;
-            Hited?.Invoke();
+            SetVisibility(1f);
+            Hited?.Invoke(_position);
         }
     }
 
-    private void DestroyCombo()
+    private void SetVisibility(float alphaChannel)
     {
-        if (CheckNeighboringBlocks())
-        {
-            Destroy(_previousBlock.gameObject);
-            Destroy(_nextBlock.gameObject);
-            Destroy(gameObject);
-        }
+        Color color = MaterialColor;
+        color.a = alphaChannel;
+        _blockRenderer.material.color = color;
     }
 
-    private bool CheckNeighboringBlocks()
+    public void DefinePosition(int position)
     {
-        int comboCount = 1;
+        _position = position;
+    }
 
-        if (MaterialColor == _previousBlock.MaterialColor)
-        {
-            comboCount++;
+    public virtual void DestroyItself()
+    {
+        _collider.enabled = false;
+        _blockParts.color = MaterialColor;
+        _deathEffect.Play();
+        SetVisibility(0f);
+        Destroy(gameObject, _normalDestroyDelay);
+    }
 
-            if (MaterialColor == _previousBlock.PreviousBlock.MaterialColor)
-            {
-                comboCount++;
-            }
-        }
-
-        if (MaterialColor == _nextBlock.MaterialColor)
-        {
-            comboCount++;
-
-            if (MaterialColor == _nextBlock.NextBlock.MaterialColor)
-            {
-                comboCount++;
-            }
-        }
-
-        return comboCount >= 3;
+    public void FreeItself()
+    {
+        transform.parent = null;
+        _rigidbody.isKinematic = false;
+        Destroy(gameObject, _freeBlockDestroyDelay);
     }
 }
