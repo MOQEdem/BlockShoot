@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2707482878982634655}
   - component: {fileID: 2707482878982634654}
   - component: {fileID: 3020332592322886179}
+  - component: {fileID: 3438221047440281089}
   m_Layer: 0
   m_Name: EnemyOne
   m_TagString: Untagged
@@ -59,7 +60,8 @@ MonoBehaviour:
   - {fileID: 2588058734791689578}
   - {fileID: 8486350733079518898}
   _minBlockCombo: 3
-  _destroyDelay: 3
+  _destroyDelay: 2
+  _comboFindingDelay: 0.4
 --- !u!114 &2707482878982634654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,7 +78,7 @@ MonoBehaviour:
   _faceHited: {fileID: 21300000, guid: deb28cb372e1ee54fad618f6df43247f, type: 3}
   _faceDead: {fileID: 21300000, guid: 530104bb06ae52a4b8b66a5043175e71, type: 3}
   _face: {fileID: 6560590498740474273}
-  _normalizationTime: 0.5
+  _normalizationTime: 0.4
 --- !u!114 &3020332592322886179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +92,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationDelay: 0.1
+--- !u!114 &3438221047440281089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2707482878982634649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224916e51fc0564409521709de6b3f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _speed: 0.15
 --- !u!1001 &2707482877488727180
 PrefabInstance:
   m_ObjectHideFlags: 0

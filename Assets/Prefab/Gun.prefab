@@ -247,7 +247,7 @@ MonoBehaviour:
   _muzzle: {fileID: 6095867989154795953}
   _bullet: {fileID: 723405735667223280, guid: 86b6caf4e8fd8fb40bb0ac667f79d49a, type: 3}
   _shootEffect: {fileID: 5045845424484746072}
-  _recoilSpeed: 0.75
+  _recoilSpeed: 0.5
 --- !u!95 &3739391440454725749
 Animator:
   serializedVersion: 3

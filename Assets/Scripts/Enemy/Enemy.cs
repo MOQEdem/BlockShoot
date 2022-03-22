@@ -5,21 +5,27 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Face))]
 [RequireComponent(typeof(AnimationController))]
+[RequireComponent(typeof(EnemyMover))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private List<Block> _blocks;
     [SerializeField] private int _minBlockCombo;
     [SerializeField] private float _destroyDelay;
+    [SerializeField] private float _comboFindingDelay;
 
     private Face _face;
+    private EnemyMover _enemyMover;
     private Color _baseBlockColor;
     private AnimationController _animationController;
 
-    public UnityAction EnemyDead;
+    public EnemyMover Mover => _enemyMover;
+
+    public UnityAction Died;
 
     private void Awake()
     {
         _face = GetComponent<Face>();
+        _enemyMover = GetComponent<EnemyMover>();
         _animationController = GetComponent<AnimationController>();
         _baseBlockColor = _blocks[0].MaterialColor;
     }
@@ -43,10 +49,7 @@ public class Enemy : MonoBehaviour
 
     private void OnBlockHit(int blockPosition)
     {
-        List<List<Block>> comboBlockList = GetListBlockCombo();
-
-        if (IsGotBigCombo(in comboBlockList))
-            BreakCombos(in comboBlockList);
+        StartCoroutine(AnalyzeOfBlockComposition(GetListBlockCombo()));
 
         if (!_face.IsFaceMissing())
         {
@@ -55,9 +58,6 @@ public class Enemy : MonoBehaviour
             else
                 _face.SetDeadFace();
         }
-
-        if (IsKilled())
-            DestroyRemnants();
 
         if (_blocks.Count > 0)
         {
@@ -147,7 +147,20 @@ public class Enemy : MonoBehaviour
 
     private void DestroyRemnants()
     {
-        EnemyDead?.Invoke();
+        Died?.Invoke();
         Destroy(gameObject, _destroyDelay);
+    }
+
+    private IEnumerator AnalyzeOfBlockComposition(List<List<Block>> comboBlockList)
+    {
+        var _delayTime = new WaitForSeconds(_comboFindingDelay);
+
+        yield return _delayTime;
+
+        if (IsGotBigCombo(in comboBlockList))
+            BreakCombos(in comboBlockList);
+
+        if (IsKilled())
+            DestroyRemnants();
     }
 }

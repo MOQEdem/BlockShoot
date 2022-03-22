@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4fd8a1da0089245b32bab98e0b9891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 20
   _flyEffect: {fileID: 4312263113263554803}
   _hitEffect: {fileID: 4238683068055611185}
   _lifetime: 3
