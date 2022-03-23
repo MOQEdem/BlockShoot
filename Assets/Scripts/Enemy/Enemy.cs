@@ -6,12 +6,14 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Face))]
 [RequireComponent(typeof(AnimationController))]
 [RequireComponent(typeof(EnemyMover))]
+[RequireComponent(typeof(BlockColorRandomizer))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private List<Block> _blocks;
     [SerializeField] private int _minBlockCombo;
     [SerializeField] private float _destroyDelay;
     [SerializeField] private float _comboFindingDelay;
+    [SerializeField] private BlockColorRandomizer _randomizer;
 
     private Face _face;
     private EnemyMover _enemyMover;
@@ -28,6 +30,9 @@ public class Enemy : MonoBehaviour
         _enemyMover = GetComponent<EnemyMover>();
         _animationController = GetComponent<AnimationController>();
         _baseBlockColor = _blocks[0].MaterialColor;
+        _randomizer = GetComponent<BlockColorRandomizer>();
+
+        _randomizer.RandomizeBlockColors(_blocks);
     }
 
     private void OnEnable()

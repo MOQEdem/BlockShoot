@@ -9,6 +9,8 @@ public class EnemyMover : MonoBehaviour
 
     private IEnumerator MoveToPlayer()
     {
+        transform.LookAt(_player.transform);
+
         while (_player != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _speed * Time.deltaTime);

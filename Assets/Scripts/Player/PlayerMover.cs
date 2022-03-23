@@ -7,11 +7,14 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationSpeed;
+    [SerializeField] private float _delayBeforMove;
 
     public UnityAction MovementComplete;
 
     private IEnumerator Move(List<Transform> waypoints)
     {
+        yield return new WaitForSeconds(_delayBeforMove);
+
         int currentPoint = 0;
 
         while (currentPoint < waypoints.Count)

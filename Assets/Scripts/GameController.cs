@@ -6,9 +6,9 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private List<GameRound> _rounds;
     [SerializeField] private PlayerMover _player;
-
     [SerializeField] private int _currentRound;
     [SerializeField] private int _currentEnemy;
+    [SerializeField] private EndGameScreen _screen;
 
     private void OnEnable()
     {
@@ -57,7 +57,7 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                Debug.Log("Pobeda?");
+                _screen.gameObject.SetActive(true);
             }
         }
     }

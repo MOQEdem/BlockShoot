@@ -46,7 +46,7 @@ public class Block : MonoBehaviour
     {
         if (other.TryGetComponent<Bullet>(out Bullet bullet))
         {
-            _blockRenderer.material.color = bullet.MaterialColor;
+            SetColor(bullet.MaterialColor);
             SetVisibility(1f);
             Hited?.Invoke(_position);
         }
@@ -78,5 +78,10 @@ public class Block : MonoBehaviour
         transform.parent = null;
         _rigidbody.isKinematic = false;
         Destroy(gameObject, _freeBlockDestroyDelay);
+    }
+
+    public void SetColor(Color color)
+    {
+        _blockRenderer.material.color = color;
     }
 }
