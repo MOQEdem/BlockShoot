@@ -13,12 +13,6 @@ public class Cartridge : MonoBehaviour
     {
         _renderer = GetComponent<MeshRenderer>();
     }
-    protected void SetInvisibility()
-    {
-        Color color = MaterialColor;
-        color.a = 0;
-        _renderer.material.color = color;
-    }
 
     public void SetColor(Color color)
     {

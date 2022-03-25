@@ -153,6 +153,7 @@ public class Enemy : MonoBehaviour
     private void DestroyRemnants()
     {
         Died?.Invoke();
+
         Destroy(gameObject, _destroyDelay);
     }
 

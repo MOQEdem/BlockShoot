@@ -54,7 +54,7 @@ public class Bullet : Cartridge
         _triggerCollider.enabled = false;
         _flyEffect.Stop();
         _hitEffect.Play();
-        SetInvisibility();
-        Destroy(gameObject, _deathDelay);
+        _hitEffect.transform.parent = null;
+        Destroy(gameObject);
     }
 }

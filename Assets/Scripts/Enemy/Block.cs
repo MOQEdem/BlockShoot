@@ -11,7 +11,6 @@ using UnityEngine.Events;
 public class Block : MonoBehaviour
 {
     [SerializeField] private float _freeBlockDestroyDelay;
-    [SerializeField] private float _normalDestroyDelay;
     [SerializeField] private ParticleSystem _deathEffect;
     [SerializeField] private Material _blockParts;
     [SerializeField] private Collider _collider;
@@ -69,8 +68,8 @@ public class Block : MonoBehaviour
         _collider.enabled = false;
         _blockParts.color = MaterialColor;
         _deathEffect.Play();
-        SetVisibility(0f);
-        Destroy(gameObject, _normalDestroyDelay);
+        _deathEffect.transform.parent = null;
+        Destroy(gameObject);
     }
 
     public void FreeItself()

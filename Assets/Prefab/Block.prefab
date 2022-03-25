@@ -14703,6 +14703,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 146877396658621146}
     m_Modifications:
+    - target: {fileID: 1162125510328503980, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045235323466433559, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045235323466433559, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045235323466433559, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045235323466433559, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: ShapeModule.arc.spread
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045235323466433559, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045235323466433559, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045235323466433559, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3045235323466433559, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4511007572891057592, guid: ad08d62b56fc03f49af443404b37b23b, type: 3}
       propertyPath: m_Name
       value: BlockParts
