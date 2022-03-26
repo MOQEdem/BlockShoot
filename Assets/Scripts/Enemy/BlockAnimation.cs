@@ -18,12 +18,12 @@ public class BlockAnimation : MonoBehaviour
     {
         _animator.SetTrigger(AnimatorBlock.Trigger.Hit);
     }
-}
 
-public static class AnimatorBlock
-{
-    public static class Trigger
+    public static class AnimatorBlock
     {
-        public const string Hit = nameof(Hit);
+        public static class Trigger
+        {
+            public const string Hit = nameof(Hit);
+        }
     }
 }

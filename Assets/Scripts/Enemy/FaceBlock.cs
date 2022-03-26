@@ -10,6 +10,5 @@ public class FaceBlock : Block
     {
         _face.enabled = false;
         base.DestroyItself();
-
     }
 }

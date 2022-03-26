@@ -8,8 +8,6 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private List<Limbs> _limbs;
 
-    public List<Limbs> Limbs => _limbs;
-
     private IEnumerator MoveToPlayer()
     {
         transform.LookAt(_player.transform);

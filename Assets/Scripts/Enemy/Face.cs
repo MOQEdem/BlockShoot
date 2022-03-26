@@ -10,18 +10,6 @@ public class Face : MonoBehaviour
     [SerializeField] private SpriteRenderer _face;
     [SerializeField] private float _normalizationTime;
 
-    private IEnumerator ShowHitedFace()
-    {
-        var _recoilTime = new WaitForSeconds(_normalizationTime);
-
-        _face.sprite = _faceHited;
-
-        yield return _recoilTime;
-
-        if (!IsFaceMissing())
-            _face.sprite = _faceNormal;
-    }
-
     public void PlayFaceChange()
     {
         StartCoroutine(ShowHitedFace());
@@ -35,5 +23,17 @@ public class Face : MonoBehaviour
     public bool IsFaceMissing()
     {
         return _face == null;
+    }
+
+    private IEnumerator ShowHitedFace()
+    {
+        var _recoilTime = new WaitForSeconds(_normalizationTime);
+
+        _face.sprite = _faceHited;
+
+        yield return _recoilTime;
+
+        if (!IsFaceMissing())
+            _face.sprite = _faceNormal;
     }
 }

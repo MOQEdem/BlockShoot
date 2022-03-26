@@ -20,18 +20,18 @@ public class Enemy : MonoBehaviour
     private Color _baseBlockColor;
     private AnimationController _animationController;
 
-    public EnemyMover Mover => _enemyMover;
-
     public UnityAction Died;
+
+    public EnemyMover Mover => _enemyMover;
 
     private void Awake()
     {
         _face = GetComponent<Face>();
         _enemyMover = GetComponent<EnemyMover>();
         _animationController = GetComponent<AnimationController>();
-        _baseBlockColor = _blocks[0].MaterialColor;
         _randomizer = GetComponent<BlockColorRandomizer>();
 
+        _baseBlockColor = _blocks[0].MaterialColor;
         _randomizer.RandomizeBlockColors(_blocks);
     }
 

@@ -11,6 +11,16 @@ public class PlayerMover : MonoBehaviour
 
     public UnityAction MovementComplete;
 
+    public void StartMoving(List<Transform> waypoints)
+    {
+        StartCoroutine(Move(waypoints));
+    }
+
+    public void ChangeTrackingEnemy(Enemy enemy)
+    {
+        StartCoroutine(LookForEnemy(enemy));
+    }
+
     private IEnumerator Move(List<Transform> waypoints)
     {
         yield return new WaitForSeconds(_delayBeforMove);
@@ -44,15 +54,5 @@ public class PlayerMover : MonoBehaviour
 
             yield return null;
         }
-    }
-
-    public void StartMoving(List<Transform> waypoints)
-    {
-        StartCoroutine(Move(waypoints));
-    }
-
-    public void ChangeTrackingEnemy(Enemy enemy)
-    {
-        StartCoroutine(LookForEnemy(enemy));
     }
 }

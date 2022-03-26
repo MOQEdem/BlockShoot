@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class HandMover : MonoBehaviour
 {
-    private float oXRotation;
-    private float oYRotation;
+    private float _oXRotation;
+    private float _oYRotation;
 
     private void Start()
     {
-        oXRotation = 0;
-        oYRotation = 0;
+        _oXRotation = 0;
+        _oYRotation = 0;
     }
 
     private void Update()
     {
-        oXRotation += Input.GetAxis("Mouse X");
-        oYRotation += Input.GetAxis("Mouse Y");
+        _oXRotation += Input.GetAxis("Mouse X");
+        _oYRotation += Input.GetAxis("Mouse Y");
 
-        transform.rotation = Quaternion.Euler(-oYRotation, oXRotation, 0f);
+        transform.rotation = Quaternion.Euler(-_oYRotation, _oXRotation, 0f);
     }
 }

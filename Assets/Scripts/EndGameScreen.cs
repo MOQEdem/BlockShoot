@@ -23,13 +23,7 @@ public class EndGameScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        // Time.timeScale = 0;
         StartCoroutine(ShowScreen());
-    }
-
-    private void OnDisable()
-    {
-        //Time.timeScale = 1;
     }
 
     public void ReloadScene()

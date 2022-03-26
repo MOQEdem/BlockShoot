@@ -15,19 +15,17 @@ public class Block : MonoBehaviour
     [SerializeField] private Material _blockParts;
     [SerializeField] private Collider _collider;
 
-    public class Hit : UnityEvent<int> { }
-
     private Rigidbody _rigidbody;
     private MeshRenderer _blockRenderer;
     private BlockAnimation _blockAnimation;
     private Explosion _explosion;
     private int _position;
 
+    public Hit Hited;
+
     public Color MaterialColor => _blockRenderer.material.color;
     public Explosion Explosion => _explosion;
     public BlockAnimation Animation => _blockAnimation;
-
-    public Hit Hited;
 
     private void Awake()
     {
@@ -49,13 +47,6 @@ public class Block : MonoBehaviour
             SetVisibility(1f);
             Hited?.Invoke(_position);
         }
-    }
-
-    private void SetVisibility(float alphaChannel)
-    {
-        Color color = MaterialColor;
-        color.a = alphaChannel;
-        _blockRenderer.material.color = color;
     }
 
     public void DefinePosition(int position)
@@ -83,4 +74,13 @@ public class Block : MonoBehaviour
     {
         _blockRenderer.material.color = color;
     }
+
+    private void SetVisibility(float alphaChannel)
+    {
+        Color color = MaterialColor;
+        color.a = alphaChannel;
+        _blockRenderer.material.color = color;
+    }
+
+    public class Hit : UnityEvent<int> { }
 }

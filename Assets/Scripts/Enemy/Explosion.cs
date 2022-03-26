@@ -10,8 +10,6 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float _tossing;
     [SerializeField] private float _rotationSpeed;
 
-    private Rigidbody _rigidbody;
-
     public void Explode()
     {
         Vector3 newRotation = new Vector3(Random.Range(-100f, 100f), Random.Range(-100f, 100f), Random.Range(-100f, 100f));

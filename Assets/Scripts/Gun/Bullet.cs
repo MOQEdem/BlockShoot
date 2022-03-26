@@ -9,10 +9,18 @@ public class Bullet : Cartridge
     [SerializeField] private ParticleSystem _flyEffect;
     [SerializeField] private ParticleSystem _hitEffect;
     [SerializeField] private float _lifetime;
-    [SerializeField] private float _deathDelay;
     [SerializeField] private Collider _triggerCollider;
 
     private Rigidbody _rigidbody;
+
+    public void Destroy()
+    {
+        _triggerCollider.enabled = false;
+        _flyEffect.Stop();
+        _hitEffect.Play();
+        _hitEffect.transform.parent = null;
+        Destroy(gameObject);
+    }
 
     private void Start()
     {
@@ -47,14 +55,5 @@ public class Bullet : Cartridge
         {
             Destroy();
         }
-    }
-
-    public void Destroy()
-    {
-        _triggerCollider.enabled = false;
-        _flyEffect.Stop();
-        _hitEffect.Play();
-        _hitEffect.transform.parent = null;
-        Destroy(gameObject);
     }
 }

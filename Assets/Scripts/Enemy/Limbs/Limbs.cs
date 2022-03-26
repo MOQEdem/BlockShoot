@@ -12,8 +12,5 @@ public class Limbs : MonoBehaviour
         Animator = GetComponent<Animator>();
     }
 
-    public virtual void RunAnimation()
-    {
-
-    }
+    public virtual void RunAnimation() { }
 }
