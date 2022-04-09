@@ -62,6 +62,7 @@ MonoBehaviour:
   - {fileID: 8486350733079518898}
   _minBlockCombo: 3
   _destroyDelay: 3
+  "_delay\u0421hainOfExplosions": 0.07
   _comboFindingDelay: 0.5
   _randomizer: {fileID: 2660824436844953192}
 --- !u!114 &2707482878982634654
@@ -126,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _colors:
   - {r: 1, g: 0.5686275, b: 0, a: 0}
-  - {r: 0.62352943, g: 0.23529412, b: 0.92941177, a: 0}
+  - {r: 0.44705883, g: 0, b: 0.8117647, a: 0}
   _numberOfRandom: 0
 --- !u!1001 &199836650079285306
 PrefabInstance:

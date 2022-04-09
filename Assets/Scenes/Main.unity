@@ -20,12 +20,12 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
-  m_AmbientEquatorColor: {r: 0.6845141, g: 0.7759842, b: 0.8301887, a: 1}
-  m_AmbientGroundColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
+  m_AmbientSkyColor: {r: 1.1339221, g: 1.1339221, b: 1.1339221, a: 1}
+  m_AmbientEquatorColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientGroundColor: {r: 0.16666667, g: 0.16666667, b: 0.16666667, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 50bf15468c19e0e40b5bf26662770a34, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 705507994}
   m_IndirectSpecularColor: {r: 0.64134675, g: 0.8658571, b: 0.88078904, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -4152,13 +4152,13 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.9
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -5829,39 +5829,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 6986532743858958398, guid: a42cd1895f4b03046941679af754949f, type: 3}
   m_PrefabInstance: {fileID: 6986532743436836173}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: 0
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!1 &967524787
 GameObject:
   m_ObjectHideFlags: 0
@@ -8904,7 +8871,7 @@ Transform:
   - {fileID: 59035700}
   - {fileID: 436679013}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1441551298
 GameObject:
@@ -12850,6 +12817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyThree
       objectReference: {fileID: 0}
+    - target: {fileID: 653731747915209112, guid: 07b2ad966d72df34c8b84b0a688bbc71, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 653731747915209113, guid: 07b2ad966d72df34c8b84b0a688bbc71, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -12903,9 +12874,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2660824436844953192, guid: ebf017b9eafabdb41b673f4a34b2ba7e, type: 3}
+      propertyPath: _colors.Array.data[1].a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2707482878982634648, guid: ebf017b9eafabdb41b673f4a34b2ba7e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2707482878982634648, guid: ebf017b9eafabdb41b673f4a34b2ba7e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12951,6 +12926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyOne
       objectReference: {fileID: 0}
+    - target: {fileID: 2707482878982634649, guid: ebf017b9eafabdb41b673f4a34b2ba7e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438221047440281089, guid: ebf017b9eafabdb41b673f4a34b2ba7e, type: 3}
       propertyPath: _player
       value: 
@@ -12967,6 +12946,10 @@ PrefabInstance:
     - target: {fileID: 2760203245561446776, guid: 6ffb03502eb506d408120994570195cf, type: 3}
       propertyPath: m_Name
       value: EnemyTwo
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760203245561446776, guid: 6ffb03502eb506d408120994570195cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2760203245561446777, guid: 6ffb03502eb506d408120994570195cf, type: 3}
       propertyPath: m_RootOrder
@@ -13025,21 +13008,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1700970712, guid: a42cd1895f4b03046941679af754949f, type: 3}
-      propertyPath: _speed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1700970712, guid: a42cd1895f4b03046941679af754949f, type: 3}
-      propertyPath: _delayBeforMove
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6986532745133612440, guid: a42cd1895f4b03046941679af754949f, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6986532745133612443, guid: a42cd1895f4b03046941679af754949f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986532745133612443, guid: a42cd1895f4b03046941679af754949f, type: 3}
       propertyPath: m_LocalPosition.x

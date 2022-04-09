@@ -243,7 +243,7 @@ MonoBehaviour:
   - {fileID: 2539506648986430245}
   _cartridgeColors:
   - {r: 1, g: 0.5686275, b: 0, a: 0}
-  - {r: 0.62352943, g: 0.23529412, b: 0.92941177, a: 0}
+  - {r: 0.4478785, g: 0, b: 0.8113208, a: 0}
   _muzzle: {fileID: 6095867989154795953}
   _bullet: {fileID: 723405735667223280, guid: 86b6caf4e8fd8fb40bb0ac667f79d49a, type: 3}
   _shootEffect: {fileID: 5045845424484746072}

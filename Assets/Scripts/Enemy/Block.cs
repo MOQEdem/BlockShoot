@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using RayFire;
 
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Explosion))]
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(BlockAnimation))]
+[RequireComponent(typeof(RayfireRigid))]
 public class Block : MonoBehaviour
 {
-    [SerializeField] private float _freeBlockDestroyDelay;
+    [SerializeField] private float _destroyDelay;
     [SerializeField] private ParticleSystem _deathEffect;
     [SerializeField] private Material _blockParts;
     [SerializeField] private Collider _collider;
+    [SerializeField] private RayfireBomb _bomb;
 
+    private RayfireRigid _rayfireRigid;
     private Rigidbody _rigidbody;
     private MeshRenderer _blockRenderer;
     private BlockAnimation _blockAnimation;
@@ -37,6 +41,7 @@ public class Block : MonoBehaviour
         _explosion = GetComponent<Explosion>();
         _collider = GetComponent<Collider>();
         _blockAnimation = GetComponent<BlockAnimation>();
+        _rayfireRigid = GetComponent<RayfireRigid>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,6 +49,7 @@ public class Block : MonoBehaviour
         if (other.TryGetComponent<Bullet>(out Bullet bullet))
         {
             SetColor(bullet.MaterialColor);
+            _deathEffect.startColor = bullet.MaterialColor;
             SetVisibility(1f);
             Hited?.Invoke(_position);
         }
@@ -56,10 +62,12 @@ public class Block : MonoBehaviour
 
     public virtual void DestroyItself()
     {
+        _rayfireRigid.Demolish();
         _collider.enabled = false;
+        _bomb.Explode(0f);
         _blockParts.color = MaterialColor;
-        _deathEffect.Play();
         _deathEffect.transform.parent = null;
+        _deathEffect.Play();
         Destroy(gameObject);
     }
 
@@ -67,7 +75,7 @@ public class Block : MonoBehaviour
     {
         transform.parent = null;
         _rigidbody.isKinematic = false;
-        Destroy(gameObject, _freeBlockDestroyDelay);
+        Destroy(gameObject, _destroyDelay);
     }
 
     public void SetColor(Color color)

@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<Block> _blocks;
     [SerializeField] private int _minBlockCombo;
     [SerializeField] private float _destroyDelay;
+    [SerializeField] private float _delay—hainOfExplosions;
     [SerializeField] private float _comboFindingDelay;
     [SerializeField] private BlockColorRandomizer _randomizer;
 
@@ -126,8 +127,9 @@ public class Enemy : MonoBehaviour
                         for (int i = 0; i < list.Count; i++)
                         {
                             _blocks.Remove(list[i]);
-                            list[i].DestroyItself();
                         }
+
+                        StartCoroutine(DestroyChainOfBlocks(list));
 
                         isComboBroke = true;
                     }
@@ -168,5 +170,17 @@ public class Enemy : MonoBehaviour
 
         if (IsKilled())
             DestroyRemnants();
+    }
+
+    private IEnumerator DestroyChainOfBlocks(List<Block> blocks)
+    {
+        var delay—hainOfExplosions = new WaitForSeconds(_delay—hainOfExplosions);
+
+        for (int i = blocks.Count - 1; i >= 0; i--)
+        {
+            blocks[i].DestroyItself();
+
+            yield return delay—hainOfExplosions;
+        }
     }
 }
